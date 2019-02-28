@@ -32,7 +32,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/style/app.styl', '~/assets/style/style.css'],
+  css: ['~/assets/style/app.styl', '~/assets/style/css/override-fonts.css'],
 
   /*
   ** Plugins to load before mounting the App
@@ -57,7 +57,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    cssSourceMap: false,
     transpile: ['vuetify/lib'],
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
