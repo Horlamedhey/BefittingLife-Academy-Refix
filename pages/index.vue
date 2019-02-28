@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-parallax style="height: fit-content" class="parallax pt-5" :src="require('~/assets/beautiful.jpg')">
+    <v-parallax style="height: fit-content;" class="parallax" :src="require('~/assets/beautiful.jpg')">
       <v-layout
         column
         align-center
@@ -8,7 +8,7 @@
         class="white--text pb-5"
       >
         <img src="/logo.png" alt="Vuetify.js" height="200">
-        <h1 class="karabine mb-2 display-4 text-xs-center">
+        <h1 class="karabine mb-2 display-3 text-xs-center">
           {{ title }}
         </h1>
         <div class="subheading mb-3 text-xs-center Salsa">
@@ -23,15 +23,15 @@
           SignUp for 7 days free trial
         </v-btn>
       </v-layout>
+      <v-img style="position: absolute; bottom: -10px; left: 0; right: 0;" src="/curve.png" />
     </v-parallax>
-    <v-img style="top: -50px;" src="/curve.png" />
     <v-layout
       column
       wrap
       class="mt-5"
       align-center
     >
-      <v-flex xs12 sm4 class="mt-3">
+      <v-flex xs12 sm4 class="mt-5">
         <div class="text-xs-center">
           <h2 class="display-1 Salsa">
             The best place to start growing
@@ -56,7 +56,7 @@
                     {{ feature.title }}
                   </div>
                 </v-card-title>
-                <v-card-text class="Lato-300 text-xs-justify">
+                <v-card-text class="Lato font-weight-regular text-xs-justify">
                   {{ feature.desc }}
                 </v-card-text>
               </v-card>
@@ -64,8 +64,10 @@
           </v-layout>
         </v-container>
       </v-flex>
-      <v-flex class="mt-5 mb-5" xs12>
-        <v-container>
+    </v-layout>
+    <v-container>
+      <v-layout>
+        <v-flex class="mt-5 mb-5" xs12>
           <v-layout
             v-for="(about, i) in abouts"
             :key="i"
@@ -80,7 +82,7 @@
             </v-flex>
             <v-flex xs12 md5>
               <v-card class="transparent" elevation="0">
-                <v-card-title class="headline sail">
+                <v-card-title class="headline Salsa">
                   {{ about.title }}
                 </v-card-title>
                 <v-card-text class="Lato font-weight-regular text-xs-justify">
@@ -92,133 +94,134 @@
               <v-img :src="about.img" />
             </v-flex>
           </v-layout>
-          <v-layout column wrap class="mt-5 pt-5 primary white--text">
-            <v-flex xs12>
-              <h2 class="display-1 text-xs-center Salsa">
-                Packages
-              </h2>
-            </v-flex>
-            <v-flex class="mt-2">
-              <v-container class="text-xs-center headline Lato-300">
-                Earn more discounts for more than one user's subscription.
-              </v-container>
-            </v-flex>
-            <v-flex class="mt-5" xs12>
-              <v-container>
-                <v-layout row justify-center>
-                  <v-flex
-                    v-for="(plan, i) in plans"
-                    :key="i"
-                    :style="i !== 0? 'margin-left: -4%' : ''"
-                    :class="i !== 0 ? `mt-${i+3}` : ''"
-                    xs4
-                  >
-                    <v-card class="pb-3" elevation="14">
-                      <v-card-title class="pb-0" style="justify-content: center;">
-                        <h3>
-                          {{ plan.title }}
-                        </h3>
-                      </v-card-title>
-                      <v-card-text class="grey--text text-xs-center pt-1">
-                        Unlimited access for {{ plan.desc }}
-                      </v-card-text>
-                      <v-card-text style="word-spacing: -12px;" class="display-3 font-weight-bold text-xs-center primary--text">
-                        <sup>$</sup>
-                        {{ plan.price }}
-                        <span class="grey--text body-2 font-weight-bold">
-                          /user
-                        </span>
-                      </v-card-text>
-                      <v-card-text class="pb-0 text-xs-center subheading">
-                        300+ Audio Lessons
-                      </v-card-text>
-                      <v-card-text class="pb-0 pt-2 text-xs-center subheading">
-                        800+ Video Lessons
-                      </v-card-text>
-                      <v-card-text class="pt-2 text-xs-center subheading">
-                        Online Support
-                      </v-card-text>
-                      <v-card-actions style="justify-content: center" class="mt-5">
-                        <v-btn outline round color="primary" class="Salsa">
-                          CHOOSE PACKAGE
-                        </v-btn>
-                      </v-card-actions>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-flex>
-          </v-layout>
-          <v-layout column wrap class="mt-5 pt-5 justify-center">
-            <h2 class="mb-5 display-1 text-xs-center Salsa">
-              Feedbacks
-            </h2>
-            <v-layout style="margin-top: 70px; height: 380px;" class="justify-center">
-              <v-flex id="feedback" xs12 md6 style="transition: 0.5s;">
-                <v-card class="grey lighten-3" style="box-shadow:  1px 1px 5px rgba(0, 0, 0, 0.3) inset, -1px -1px 5px rgba(0, 0, 0, 0.3) inset;">
-                  <v-layout class="justify-center">
-                    <v-avatar size="200">
-                      <v-img
-                        style="position: absolute; top: -40%; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5),
-                      -1px -1px 5px rgba(0, 0, 0, 0.5);"
-                        :src="feedbacks[activeFeedback].img"
-                      />
-                    </v-avatar>
-                  </v-layout>
-                  <v-card-text class="Lato" style="margin-top: -50px">
-                    {{ feedbacks[activeFeedback].text }}
+        </v-flex>
+      </v-layout>
+      <v-layout column wrap class="mt-5 pt-5 primary white--text">
+        <v-flex xs12>
+          <h2 class="display-1 text-xs-center Salsa">
+            Packages
+          </h2>
+        </v-flex>
+        <v-flex class="mt-2">
+          <v-container class="text-xs-center headline Lato-300">
+            Earn more discounts for more than one user's subscription.
+          </v-container>
+        </v-flex>
+        <v-flex class="mt-5" xs12>
+          <v-container grid-list-xs>
+            <v-layout row justify-center wrap>
+              <v-flex
+                v-for="(plan, i) in plans"
+                :key="i"
+                :style="i !== 0? 'margin-left: -4%' : ''"
+                :class="i !== 0 ? `mt-${i+3}` : ''"
+                xs12
+                sm4
+              >
+                <v-card class="pb-3" elevation="14">
+                  <v-card-title class="pb-0" style="justify-content: center;">
+                    <h3>
+                      {{ plan.title }}
+                    </h3>
+                  </v-card-title>
+                  <v-card-text class="grey--text text-xs-center pt-1">
+                    Unlimited access for {{ plan.desc }}
                   </v-card-text>
+                  <v-card-text style="word-spacing: -12px;" class="display-3 font-weight-bold text-xs-center primary--text">
+                    <sup>$</sup>
+                    {{ plan.price }}
+                    <span class="grey--text body-2 font-weight-bold">
+                      /user
+                    </span>
+                  </v-card-text>
+                  <v-card-text class="pb-0 text-xs-center subheading">
+                    300+ Audio Lessons
+                  </v-card-text>
+                  <v-card-text class="pb-0 pt-2 text-xs-center subheading">
+                    800+ Video Lessons
+                  </v-card-text>
+                  <v-card-text class="pt-2 text-xs-center subheading">
+                    Online Support
+                  </v-card-text>
+                  <v-card-actions style="justify-content: center" class="mt-5">
+                    <v-btn outline round color="primary" class="Salsa">
+                      CHOOSE PACKAGE
+                    </v-btn>
+                  </v-card-actions>
                 </v-card>
               </v-flex>
             </v-layout>
-          </v-layout>
-          <!--<v-layout column wrap class="mt-5 pt-5">-->
-          <!--<v-flex xs12>-->
-          <!--<h2 class="display-1 text-xs-center Salsa">-->
-          <!--Blog-->
-          <!--</h2>-->
-          <!--</v-flex>-->
-          <!--<v-flex class="mb-5" xs12>-->
-          <!--<v-container grid-list-xl>-->
-          <!--<v-layout row wrap align-center justify-center>-->
-          <!--<v-flex v-for="(tutor, i) in tutors" :key="i" xs12 md4>-->
-          <!--<v-card class="elevation-4 transparent" hover @mouseover="showDetails(i)" @mouseleave="hideDetails(i)">-->
-          <!--<v-card-actions class="justify-center">-->
-          <!--<v-btn icon flat color="primary">-->
-          <!--<v-icon>mdi-instagram</v-icon>-->
-          <!--</v-btn>-->
-          <!--<v-btn icon flat color="primary">-->
-          <!--<v-icon>mdi-twitter</v-icon>-->
-          <!--</v-btn>-->
-          <!--<v-btn :href="tutor.facebook" icon flat color="primary">-->
-          <!--<v-icon>mdi-facebook</v-icon>-->
-          <!--</v-btn>-->
-          <!--<v-btn icon flat color="primary">-->
-          <!--<v-icon>mdi-linkedin</v-icon>-->
-          <!--</v-btn>-->
-          <!--</v-card-actions>-->
-          <!--<v-img :src="tutor.img">-->
-          <!--<v-card-title-->
-          <!--:id="`tutor_${i}`"-->
-          <!--style="background: rgba(0, 0, 0, 0.5); position: absolute; bottom: -100%; left: 0; right: 0;-->
-          <!--justify-content: center; transition: 0.5s"-->
-          <!--class="me white&#45;&#45;text title text-xs-center"-->
-          <!--&gt;-->
-          <!--{{ tutor.name }}-->
-          <!--<v-card-text class="subheading">-->
-          <!--{{ tutor.skill }}-->
-          <!--</v-card-text>-->
-          <!--</v-card-title>-->
-          <!--</v-img>-->
-          <!--</v-card>-->
-          <!--</v-flex>-->
-          <!--</v-layout>-->
-          <!--</v-container>-->
-          <!--</v-flex>-->
-          <!--</v-layout>-->
-        </v-container>
-      </v-flex>
-    </v-layout>
+          </v-container>
+        </v-flex>
+      </v-layout>
+      <v-layout column wrap class="mt-5 pt-5 justify-center">
+        <h2 class="mb-5 display-1 text-xs-center Salsa">
+          Feedbacks
+        </h2>
+        <v-layout style="margin-top: 70px; height: 380px;" class="justify-center">
+          <v-flex id="feedback" xs12 md6 style="transition: 0.5s;">
+            <v-card class="grey lighten-3" style="box-shadow:  1px 1px 5px rgba(0, 0, 0, 0.3) inset, -1px -1px 5px rgba(0, 0, 0, 0.3) inset;">
+              <v-layout class="justify-center">
+                <v-avatar size="200">
+                  <v-img
+                    style="position: absolute; top: -40%; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5),
+                        -1px -1px 5px rgba(0, 0, 0, 0.5);"
+                    :src="feedbacks[activeFeedback].img"
+                  />
+                </v-avatar>
+              </v-layout>
+              <v-card-text class="Lato" style="margin-top: -50px">
+                {{ feedbacks[activeFeedback].text }}
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-layout>
+      <!--<v-layout column wrap class="mt-5 pt-5">-->
+      <!--<v-flex xs12>-->
+      <!--<h2 class="display-1 text-xs-center Salsa">-->
+      <!--Blog-->
+      <!--</h2>-->
+      <!--</v-flex>-->
+      <!--<v-flex class="mb-5" xs12>-->
+      <!--<v-container grid-list-xl>-->
+      <!--<v-layout row wrap align-center justify-center>-->
+      <!--<v-flex v-for="(tutor, i) in tutors" :key="i" xs12 md4>-->
+      <!--<v-card class="elevation-4 transparent" hover @mouseover="showDetails(i)" @mouseleave="hideDetails(i)">-->
+      <!--<v-card-actions class="justify-center">-->
+      <!--<v-btn icon flat color="primary">-->
+      <!--<v-icon>mdi-instagram</v-icon>-->
+      <!--</v-btn>-->
+      <!--<v-btn icon flat color="primary">-->
+      <!--<v-icon>mdi-twitter</v-icon>-->
+      <!--</v-btn>-->
+      <!--<v-btn :href="tutor.facebook" icon flat color="primary">-->
+      <!--<v-icon>mdi-facebook</v-icon>-->
+      <!--</v-btn>-->
+      <!--<v-btn icon flat color="primary">-->
+      <!--<v-icon>mdi-linkedin</v-icon>-->
+      <!--</v-btn>-->
+      <!--</v-card-actions>-->
+      <!--<v-img :src="tutor.img">-->
+      <!--<v-card-title-->
+      <!--:id="`tutor_${i}`"-->
+      <!--style="background: rgba(0, 0, 0, 0.5); position: absolute; bottom: -100%; left: 0; right: 0;-->
+      <!--justify-content: center; transition: 0.5s"-->
+      <!--class="me white&#45;&#45;text title text-xs-center"-->
+      <!--&gt;-->
+      <!--{{ tutor.name }}-->
+      <!--<v-card-text class="subheading">-->
+      <!--{{ tutor.skill }}-->
+      <!--</v-card-text>-->
+      <!--</v-card-title>-->
+      <!--</v-img>-->
+      <!--</v-card>-->
+      <!--</v-flex>-->
+      <!--</v-layout>-->
+      <!--</v-container>-->
+      <!--</v-flex>-->
+      <!--</v-layout>-->
+    </v-container>
   </div>
 </template>
 
@@ -373,20 +376,15 @@ export default {
   },
   mounted() {
     setInterval(() => {
-      document.getElementById('feedback').style.transform = 'scale(0)'
-      document.getElementById('feedback').style.marginLeft = '-500px'
-      setTimeout(() => {
-        document.getElementById('feedback').style.marginLeft = '500px'
-      }, 500)
+      document.getElementById('feedback').style.opacity = '0'
       setTimeout(() => {
         if (this.activeFeedback === this.feedbacks.length - 1) {
           this.activeFeedback = 0
         } else {
           this.activeFeedback += 1
         }
-        document.getElementById('feedback').style.transform = 'scale(1)'
-        document.getElementById('feedback').style.marginLeft = 'unset'
-      }, 1000)
+        document.getElementById('feedback').style.opacity = '1'
+      }, 700)
     }, 5000)
   },
   methods: {
@@ -401,6 +399,26 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 425px) {
+  .parallax {
+    padding-top: 30%;
+  }
+}
+@media (max-width: 768px) {
+  .parallax {
+    padding-top: 23%;
+  }
+}
+@media (min-width: 769px) {
+  .parallax {
+    padding-top: 15%;
+  }
+}
+@media (min-width: 2000px) {
+  .parallax {
+    padding-top: 25%;
+  }
+}
 .parallax:after {
   content: '';
   position: absolute;

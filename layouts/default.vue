@@ -2,6 +2,8 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
+      class="hidden-sm-and-down"
+      :hide-overlay="true"
       dark
       mobile-break-point="768"
       floating
@@ -44,9 +46,6 @@
       app
       fixed
     >
-      <v-toolbar-side-icon class="hidden-sm-and-up" @click="drawer = !drawer" />
-
-
       <v-toolbar-title>
         <v-avatar tile size="40">
           <v-img src="/logo.png" />
@@ -54,18 +53,39 @@
       </v-toolbar-title>
     </v-toolbar>
     <v-content :class="$route.path === '/' ? 'pa-0' : ''">
-      <v-container style="max-width: unset" :class="$route.path === '/' ? 'pa-0 ma-0' : ''">
+      <v-container :fill-height="$route.path === '/sign'" style="max-width: unset" :class="$route.path === '/' ? 'pa-0 ma-0' : ''">
         <nuxt />
+      </v-container>
+      <v-container v-if="!loaded" style="background: rgba(255, 255, 255, 0.85); position: fixed; z-index: 3; top: 0;" class="justify-center" fill-height fluid>
+        <div class="fingerprint-spinner">
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+          <div class="spinner-ring" />
+        </div>
       </v-container>
     </v-content>
     <v-footer
+      class="justify-center secondary mt-5"
       dark
       height="auto"
     >
+      <span v-if="$route.path === '/sign'">
+        &copy;{{ new Date().getFullYear() }} —
+        <strong>
+          {{ title }}
+        </strong>
+      </span>
       <v-card
+        v-if="$route.path !== '/sign'"
         flat
         tile
-        class="primary darken-1 white--text text-xs-center"
+        class="white--text text-xs-center secondary"
       >
         <v-card-text>
           <v-btn
@@ -80,14 +100,14 @@
           </v-btn>
         </v-card-text>
 
-        <v-card-text class="white--text pt-0">
+        <v-card-text class="white--text pt-0 Lato font-weight-regular">
           Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
         </v-card-text>
 
         <v-divider />
 
         <v-card-text class="white--text">
-          &copy;{{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          &copy;{{ new Date().getFullYear() }} — <strong class="Salsa">{{ title }}</strong>
         </v-card-text>
       </v-card>
     </v-footer>
@@ -97,12 +117,15 @@
 
 <script>
 import Feedback from '~/components/Feedback.vue'
+// import { FingerprintSpinner } from 'epic-spinners'
 export default {
   components: {
     Feedback
+    // FingerprintSpinner
   },
   data() {
     return {
+      loaded: false,
       drawer: true,
       miniVariant: true,
       right: true,
@@ -129,7 +152,7 @@ export default {
         {
           icon: 'mdi-account',
           title: 'SignUp/SignIn',
-          to: '/blog',
+          to: '/sign',
           isHovered: false
         },
         {
@@ -144,6 +167,7 @@ export default {
   },
   mounted() {
     this.fix()
+    this.loaded = true
   },
   methods: {
     fix: function() {
@@ -191,5 +215,91 @@ aside {
 
 .v-list__tile--active > .v-list__tile__action > .v-icon {
   color: inherit;
+}
+.fingerprint-spinner,
+.fingerprint-spinner * {
+  box-sizing: border-box;
+}
+
+.fingerprint-spinner {
+  height: 64px;
+  width: 64px;
+  padding: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.fingerprint-spinner .spinner-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #00a685;
+  animation: fingerprint-spinner-animation 1500ms
+    cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(1) {
+  height: calc(60px / 9 + 0 * 60px / 9);
+  width: calc(60px / 9 + 0 * 60px / 9);
+  animation-delay: calc(50ms * 1);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(2) {
+  height: calc(60px / 9 + 1 * 60px / 9);
+  width: calc(60px / 9 + 1 * 60px / 9);
+  animation-delay: calc(50ms * 2);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(3) {
+  height: calc(60px / 9 + 2 * 60px / 9);
+  width: calc(60px / 9 + 2 * 60px / 9);
+  animation-delay: calc(50ms * 3);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(4) {
+  height: calc(60px / 9 + 3 * 60px / 9);
+  width: calc(60px / 9 + 3 * 60px / 9);
+  animation-delay: calc(50ms * 4);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(5) {
+  height: calc(60px / 9 + 4 * 60px / 9);
+  width: calc(60px / 9 + 4 * 60px / 9);
+  animation-delay: calc(50ms * 5);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(6) {
+  height: calc(60px / 9 + 5 * 60px / 9);
+  width: calc(60px / 9 + 5 * 60px / 9);
+  animation-delay: calc(50ms * 6);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(7) {
+  height: calc(60px / 9 + 6 * 60px / 9);
+  width: calc(60px / 9 + 6 * 60px / 9);
+  animation-delay: calc(50ms * 7);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(8) {
+  height: calc(60px / 9 + 7 * 60px / 9);
+  width: calc(60px / 9 + 7 * 60px / 9);
+  animation-delay: calc(50ms * 8);
+}
+
+.fingerprint-spinner .spinner-ring:nth-child(9) {
+  height: calc(60px / 9 + 8 * 60px / 9);
+  width: calc(60px / 9 + 8 * 60px / 9);
+  animation-delay: calc(50ms * 9);
+}
+
+@keyframes fingerprint-spinner-animation {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
