@@ -13,7 +13,7 @@
       </v-icon>
       <span class="ml-2 text-capitalize Salsa">Submit Feedback</span>
     </v-btn>
-    <v-card v-if="feedbackStatus" dark style="transition: 2s; position: fixed; bottom: 0; right: 16px; width: 350px;">
+    <v-card v-if="feedbackStatus" dark style="transition: 2s; position: fixed; bottom: 0; right: 16px; width: 300px;">
       <v-btn
         absolute
         fab

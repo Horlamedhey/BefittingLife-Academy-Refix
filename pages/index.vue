@@ -43,8 +43,8 @@
       </v-flex>
       <v-flex class="mb-5" xs12>
         <v-container grid-list-xl>
-          <v-layout row wrap align-center>
-            <v-flex v-for="(feature, i) in features" :key="i" xs12 md4>
+          <v-layout row wrap align-center justify-center>
+            <v-flex v-for="(feature, i) in features" :key="i" xs12 sm6 md4>
               <v-card class="elevation-4 transparent">
                 <v-card-text class="text-xs-center">
                   <v-icon x-large color="primary">
@@ -77,10 +77,13 @@
             align-center
             justify-space-around
           >
-            <v-flex v-if="i === 1 || i === 3" xs12 md5>
+            <v-flex class="hidden-xs-only" v-if="i === 1 || i === 3" xs12 sm5>
               <v-img :src="about.img" />
             </v-flex>
-            <v-flex xs12 md5>
+            <v-flex class="hidden-sm-and-up" xs12 sm5>
+              <v-img :src="about.img" />
+            </v-flex>
+            <v-flex xs12 sm5>
               <v-card class="transparent" elevation="0">
                 <v-card-title class="headline Salsa">
                   {{ about.title }}
@@ -90,7 +93,7 @@
                 </v-card-text>
               </v-card>
             </v-flex>
-            <v-flex v-if="i === 0 || i === 2" xs12 md5>
+            <v-flex class="hidden-xs-only" v-if="i === 0 || i === 2" xs12 sm5>
               <v-img :src="about.img" />
             </v-flex>
           </v-layout>
@@ -159,7 +162,7 @@
           Feedbacks
         </h2>
         <v-layout style="margin-top: 70px; height: 380px;" class="justify-center">
-          <v-flex id="feedback" xs12 md6 style="transition: 0.5s;">
+          <v-flex id="feedback" xs12 sm6 style="transition: 0.5s;">
             <v-card class="grey lighten-3" style="box-shadow:  1px 1px 5px rgba(0, 0, 0, 0.3) inset, -1px -1px 5px rgba(0, 0, 0, 0.3) inset;">
               <v-layout class="justify-center">
                 <v-avatar size="200">
