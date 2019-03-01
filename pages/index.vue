@@ -77,7 +77,7 @@
             align-center
             justify-space-around
           >
-            <v-flex class="hidden-xs-only" v-if="i === 1 || i === 3" xs12 sm5>
+            <v-flex v-if="i === 1 || i === 3" class="hidden-xs-only" xs12 sm5>
               <v-img :src="about.img" />
             </v-flex>
             <v-flex class="hidden-sm-and-up" xs12 sm5>
@@ -93,7 +93,7 @@
                 </v-card-text>
               </v-card>
             </v-flex>
-            <v-flex class="hidden-xs-only" v-if="i === 0 || i === 2" xs12 sm5>
+            <v-flex v-if="i === 0 || i === 2" class="hidden-xs-only" xs12 sm5>
               <v-img :src="about.img" />
             </v-flex>
           </v-layout>
@@ -180,50 +180,6 @@
           </v-flex>
         </v-layout>
       </v-layout>
-      <!--<v-layout column wrap class="mt-5 pt-5">-->
-      <!--<v-flex xs12>-->
-      <!--<h2 class="display-1 text-xs-center Salsa">-->
-      <!--Blog-->
-      <!--</h2>-->
-      <!--</v-flex>-->
-      <!--<v-flex class="mb-5" xs12>-->
-      <!--<v-container grid-list-xl>-->
-      <!--<v-layout row wrap align-center justify-center>-->
-      <!--<v-flex v-for="(tutor, i) in tutors" :key="i" xs12 md4>-->
-      <!--<v-card class="elevation-4 transparent" hover @mouseover="showDetails(i)" @mouseleave="hideDetails(i)">-->
-      <!--<v-card-actions class="justify-center">-->
-      <!--<v-btn icon flat color="primary">-->
-      <!--<v-icon>mdi-instagram</v-icon>-->
-      <!--</v-btn>-->
-      <!--<v-btn icon flat color="primary">-->
-      <!--<v-icon>mdi-twitter</v-icon>-->
-      <!--</v-btn>-->
-      <!--<v-btn :href="tutor.facebook" icon flat color="primary">-->
-      <!--<v-icon>mdi-facebook</v-icon>-->
-      <!--</v-btn>-->
-      <!--<v-btn icon flat color="primary">-->
-      <!--<v-icon>mdi-linkedin</v-icon>-->
-      <!--</v-btn>-->
-      <!--</v-card-actions>-->
-      <!--<v-img :src="tutor.img">-->
-      <!--<v-card-title-->
-      <!--:id="`tutor_${i}`"-->
-      <!--style="background: rgba(0, 0, 0, 0.5); position: absolute; bottom: -100%; left: 0; right: 0;-->
-      <!--justify-content: center; transition: 0.5s"-->
-      <!--class="me white&#45;&#45;text title text-xs-center"-->
-      <!--&gt;-->
-      <!--{{ tutor.name }}-->
-      <!--<v-card-text class="subheading">-->
-      <!--{{ tutor.skill }}-->
-      <!--</v-card-text>-->
-      <!--</v-card-title>-->
-      <!--</v-img>-->
-      <!--</v-card>-->
-      <!--</v-flex>-->
-      <!--</v-layout>-->
-      <!--</v-container>-->
-      <!--</v-flex>-->
-      <!--</v-layout>-->
     </v-container>
   </div>
 </template>
@@ -390,14 +346,7 @@ export default {
       }, 700)
     }, 5000)
   },
-  methods: {
-    // showDetails: function(i) {
-    //   document.getElementById(`tutor_${i}`).style.bottom = '0'
-    // },
-    // hideDetails: function(i) {
-    //   document.getElementById(`tutor_${i}`).style.bottom = '-100%'
-    // }
-  }
+  methods: {}
 }
 </script>
 

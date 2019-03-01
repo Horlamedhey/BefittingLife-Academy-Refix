@@ -32,7 +32,7 @@
     </v-dialog>
     <v-flex class="primary white--text" xs12 sm6>
       <v-card dark class="elevation-12" :img="require('~/assets/beautiful.jpg')">
-        <v-toolbar color="primary">
+        <v-toolbar color="primary" style="border-top-left-radius: 50px; border-bottom-right-radius: 50px;">
           <v-toolbar-title v-if="formType === 'register'" class="Salsa white--text headline">
             REGISTRATION FORM
           </v-toolbar-title>

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      v-model="drawer"
+      v-if="$route.path !== '/admin'"
       class="hidden-sm-and-down"
       :hide-overlay="true"
       dark
@@ -39,7 +39,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
-      v-if="$route.path !== '/'"
+      v-if="$route.path !== '/' && $route.path !== '/admin'"
       flat
       style="background: transparent"
       :clipped-left="true"
@@ -52,8 +52,8 @@
         </v-avatar>{{ title }}
       </v-toolbar-title>
     </v-toolbar>
-    <v-content :class="$route.path === '/' ? 'pa-0' : ''">
-      <v-container :fill-height="$route.path === '/sign'" style="max-width: unset" :class="$route.path === '/' ? 'pa-0 ma-0' : ''">
+    <v-content :class="$route.path === '/' || $route.path === '/admin' ? 'pa-0' : ''">
+      <v-container :fill-height="$route.path === '/sign'" style="max-width: unset" :class="$route.path === '/' || $route.path === '/admin' ? 'pa-0 ma-0' : ''">
         <nuxt />
       </v-container>
       <v-container v-if="!loaded" style="background: rgba(255, 255, 255, 0.85); position: fixed; z-index: 3; top: 0;" class="justify-center" fill-height fluid>
@@ -158,7 +158,7 @@ export default {
         {
           icon: 'mdi-email-variant',
           title: 'Contact Us',
-          to: '/blog',
+          to: '/contact',
           isHovered: false
         }
       ],
@@ -166,7 +166,9 @@ export default {
     }
   },
   mounted() {
-    this.fix()
+    if (this.$route.path !== '/admin') {
+      this.fix()
+    }
     this.loaded = true
   },
   methods: {

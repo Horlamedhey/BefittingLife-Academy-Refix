@@ -1,5 +1,6 @@
 <template>
   <v-card>
+    <card-skeleton-actions-round v-if="hasActions" />
     <card-skeleton-header v-if="hasHeader" />
     <v-container v-if="isHorizontal" class="pa-0">
       <v-layout column>
@@ -29,6 +30,7 @@ import CardSkeletonHeader from './CardSkeletonHeader/CardSkeletonHeader.vue'
 import CardSkeletonMedia from './CardSkeletonMedia/CardSkeletonMedia.vue'
 import CardSkeletonText from './CardSkeletonText/CardSkeletonText.vue'
 import CardSkeletonActions from './CardSkeletonActions/CardSkeletonActions.vue'
+import CardSkeletonActionsRound from './CardSkeletonActions/CardSkeletonActionsRound.vue'
 
 export default {
   name: '',
@@ -36,7 +38,8 @@ export default {
     CardSkeletonHeader,
     CardSkeletonMedia,
     CardSkeletonText,
-    CardSkeletonActions
+    CardSkeletonActions,
+    CardSkeletonActionsRound
   },
   props: {
     hasHeader: {
